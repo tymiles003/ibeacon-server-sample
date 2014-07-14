@@ -1,0 +1,8 @@
+{
+	"server_url": "localhost",
+	"redis_server_url": "localhost",
+	"http_port": 8080,
+	"ws_port": 8088,
+	"mongodb_host": "localhost",
+	"mongodb_port": 27017
+}

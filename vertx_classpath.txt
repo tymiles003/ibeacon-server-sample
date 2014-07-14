@@ -1,0 +1,5 @@
+src/main/resources
+bin
+out/production/ibeacon-server-sample
+out/test/ibeacon-server-sample
+build/deps
