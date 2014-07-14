@@ -1,5 +1,5 @@
 // WebSocketサーバに接続
-var ws = new WebSocket('ws://54.92.14.144:8088/');
+var ws = new WebSocket('ws://54.92.14.144:80/');
 
 // エラー処理
 ws.onerror = function(e) {
