@@ -61,12 +61,11 @@ dependencies {
   provided "io.vertx:vertx-platform:$vertxVersion"
   testCompile "junit:junit:$junitVersion"
   testCompile "io.vertx:testtools:$toolsVersion"
-  compile "org.json:json:20140107"
-  compile "org.apache.httpcomponents:httpclient:4.3.4"
-  compile "org.apache.httpcomponents:httpcore:4.3.2"
   compile "io.vertx:mod-redis:1.1.4"
   compile "io.vertx:mod-redis-client:1.1.4"
   compile "org.json:json:20140107"
+  compile "org.apache.httpcomponents:httpclient:4.3.4"
+  compile "org.apache.httpcomponents:httpcore:4.3.2"
   compile "org.mongodb:mongo-java-driver:2.12.2"
 }
 

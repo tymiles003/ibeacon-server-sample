@@ -82,7 +82,8 @@ public class MainVerticle extends Verticle {
         };
 
         RouteMatcher route = new RouteMatcher().get("/", indexFileMatcherHandler)
-                .get(".*\\.(css|js)$", jsCssFileMatcherHandler).post("/input", inputHandler);
+                .get(".*\\.(css|js)$", jsCssFileMatcherHandler).get("/input", inputHandler)
+                .post("/input", inputHandler);
 
         vertx.createHttpServer().requestHandler(route).listen(httpPort, serverUrl);
 
