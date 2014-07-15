@@ -70,6 +70,7 @@ public class MainVerticle extends Verticle {
                     @Override
                     public void handle(Buffer event) {
                         String param = event.toString("UTF-8");
+                        System.out.println(param);
                         Object o = com.mongodb.util.JSON.parse(param);
                         DBObject dbObj = (DBObject) o;
                         db.getCollection("messages").insert(dbObj);
