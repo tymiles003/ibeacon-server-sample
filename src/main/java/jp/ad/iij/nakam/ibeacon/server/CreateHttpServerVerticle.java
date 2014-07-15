@@ -67,7 +67,7 @@ public class CreateHttpServerVerticle extends Verticle {
                     @Override
                     public void handle(Buffer event) {
                         String param = event.toString("UTF-8");
-                        logger.info("post : " + param);
+                        System.out.println(param);
                         Object o = com.mongodb.util.JSON.parse(param);
                         DBObject dbObj = (DBObject) o;
 
