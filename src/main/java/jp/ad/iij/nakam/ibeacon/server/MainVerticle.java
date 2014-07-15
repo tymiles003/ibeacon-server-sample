@@ -86,7 +86,6 @@ public class MainVerticle extends Verticle {
 
         vertx.createHttpServer().requestHandler(route).listen(httpPort, serverUrl);
 
-        // WebSocketサーバー
         vertx.createHttpServer().websocketHandler(new Handler<ServerWebSocket>() {
 
             @Override
