@@ -73,9 +73,10 @@ public class CreateHttpServerVerticle extends Verticle {
                         DBObject dbObj = (DBObject) o;
                         db.getCollection("messages").insert(dbObj);
                         eventBus.publish(WS_ADDRESS, param);
-                        request.response().end("message received");
                     }
                 });
+                request.response().headers().add("Connection", "close");
+                request.response().end("message received");
             }
         };
 
