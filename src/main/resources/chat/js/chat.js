@@ -1,5 +1,5 @@
 // WebSocketサーバに接続
-var ws = new WebSocket('ws://157.7.235.205/websocket/');
+var ws = new WebSocket('ws://157.7.235.205:8088');
 
 // エラー処理
 ws.onerror = function(e) {
