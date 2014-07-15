@@ -1,5 +1,7 @@
 package jp.ad.iij.nakam.ibeacon.server;
 
+import jp.ad.iij.nakam.ibeacon.server.common.ConstantConfiguration;
+
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.buffer.Buffer;
 import org.vertx.java.core.eventbus.EventBus;
@@ -10,7 +12,7 @@ import org.vertx.java.platform.Verticle;
 
 public class CreateWebSocketVerticle extends Verticle {
 
-    private static final String WS_ADDRESS = "ibeacon.log";
+    private static final String WS_ADDRESS = ConstantConfiguration.WS_ADDRESS;
 
     public void start() {
 

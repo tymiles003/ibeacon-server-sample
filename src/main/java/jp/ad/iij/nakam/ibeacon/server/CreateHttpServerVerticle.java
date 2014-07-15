@@ -2,6 +2,7 @@ package jp.ad.iij.nakam.ibeacon.server;
 
 import java.net.UnknownHostException;
 
+import jp.ad.iij.nakam.ibeacon.server.common.ConstantConfiguration;
 import jp.ad.iij.nakam.ibeacon.server.domain.dao.MongoDBClient;
 
 import org.vertx.java.core.Handler;
@@ -21,7 +22,7 @@ import com.mongodb.DBObject;
  */
 public class CreateHttpServerVerticle extends Verticle {
 
-    private static final String WS_ADDRESS = "eventbus.http.post.input";
+    private static final String WS_ADDRESS = ConstantConfiguration.WS_ADDRESS;
     private static final String INDEX_PAGE = "index.html";
 
     MongoDBClient mongo;
