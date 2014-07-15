@@ -9,14 +9,20 @@ import com.mongodb.MongoClient;
 
 public class MongoDBClient {
 
-    private DB db;
+    private static DB db = null;
 
-    public MongoDBClient(JsonObject config) throws UnknownHostException {
-        String mongodbUrl = config.getString("mongodb_host");
-        Integer mongodbPort = config.getInteger("mongodb_port");
-        MongoClient mongoClient = null;
-        mongoClient = new MongoClient(mongodbUrl, mongodbPort);
-        db = mongoClient.getDB("ble");
+    private MongoDBClient() {
+    };
+
+    public static DB getDb(JsonObject config) throws UnknownHostException {
+        if (db == null) {
+            String mongodbUrl = config.getString("mongodb_host");
+            Integer mongodbPort = config.getInteger("mongodb_port");
+            MongoClient mongoClient = null;
+            mongoClient = new MongoClient(mongodbUrl, mongodbPort);
+            db = mongoClient.getDB("ble");
+        }
+        return db;
     }
 
     public DB getDB() {

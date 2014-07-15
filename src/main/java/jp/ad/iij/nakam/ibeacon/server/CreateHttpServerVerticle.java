@@ -25,7 +25,7 @@ public class CreateHttpServerVerticle extends Verticle {
     private static final String WS_ADDRESS = ConstantConfiguration.WS_ADDRESS;
     private static final String INDEX_PAGE = "index.html";
 
-    MongoDBClient mongo;
+    DB db;
 
     /**
      * startメソッド
@@ -40,12 +40,11 @@ public class CreateHttpServerVerticle extends Verticle {
         final EventBus eventBus = vertx.eventBus();
         final Logger logger = container.logger();
         try {
-            mongo = new MongoDBClient(config);
+            db = MongoDBClient.getDb(config);
         } catch (UnknownHostException e) {
             logger.error(e.getMessage());
             e.printStackTrace();
         }
-        final DB db = mongo.getDB();
         // HTTPリクエストサーバー
 
         Handler<HttpServerRequest> indexFileMatcherHandler = new Handler<HttpServerRequest>() {
@@ -71,6 +70,7 @@ public class CreateHttpServerVerticle extends Verticle {
                         System.out.println(param);
                         Object o = com.mongodb.util.JSON.parse(param);
                         DBObject dbObj = (DBObject) o;
+
                         db.getCollection("messages").insert(dbObj);
                         eventBus.publish(WS_ADDRESS, param);
                     }
