@@ -25,6 +25,8 @@ public class CreateHttpServerVerticle extends Verticle {
     private static final String WS_ADDRESS = ConstantConfiguration.WS_ADDRESS;
     private static final String INDEX_PAGE = "index.html";
 
+    // Logger logger = LoggerFactory.getLogger(CreateHttpServerVerticle.class);
+    Logger logger;
     DB db;
 
     /**
@@ -38,7 +40,7 @@ public class CreateHttpServerVerticle extends Verticle {
         String serverUrl = config.getString("server_url");
         int httpPort = config.getInteger("http_port");
         final EventBus eventBus = vertx.eventBus();
-        final Logger logger = container.logger();
+        logger = container.logger();
         try {
             db = MongoDBClient.getDb(config);
         } catch (UnknownHostException e) {
@@ -67,7 +69,8 @@ public class CreateHttpServerVerticle extends Verticle {
                     @Override
                     public void handle(Buffer event) {
                         String param = event.toString("UTF-8");
-                        System.out.println(param);
+                        logger.info(param);
+                        // System.out.println(param);
                         Object o = com.mongodb.util.JSON.parse(param);
                         DBObject dbObj = (DBObject) o;
 
@@ -75,7 +78,6 @@ public class CreateHttpServerVerticle extends Verticle {
                         eventBus.publish(WS_ADDRESS, param);
                     }
                 });
-                request.response().headers().add("Connection", "close");
                 request.response().end("message received");
             }
         };
