@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+eclipse.classpath.file {
+    whenMerged { classpath ->
+        classpath.entries.removeAll { entry -> entry.path.endsWith('log4j-1.2.9.jar') }
+        classpath.entries.removeAll { entry -> entry.path.endsWith('.pom') }
+        classpath.entries.findAll { entry -> entry.kind == 'output' }*.path = "build/eclipse-bin"
+    }
+}

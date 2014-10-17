@@ -1,0 +1,11 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+[checkstyleMain, checkstyleTest]*.ignoreFailures = true
+checkstyleMain.configFile = file('../project/javastyle/checkstyle.xml')
+checkstyleTest.excludes = ['**/*']
+checkstyleMain << {
+    ant.xslt(in: reports.xml.destination,
+             style: new File('../project/javastyle/checkstyle-noframes-sorted.xsl'),
+             out: new File(reports.xml.destination.parent, 'main.html'))
+}
