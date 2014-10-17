@@ -5,6 +5,6 @@ findbugs.ignoreFailures = true
 findbugsTest.excludes = ['**/*']
 findbugsMain << {
     ant.xslt(in: reports.xml.destination,
-             style: new File('../project/javastyle/findbugs-fancy.xsl'),
+             style: new File('project/javastyle/findbugs-fancy.xsl'),
              out: new File(reports.xml.destination.parent, 'main.html'))
 }
