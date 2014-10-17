@@ -1,4 +1,7 @@
 apply from: "gradle/vertx.gradle"
+apply from: 'gradle/checkstyle.gradle'
+apply from: 'gradle/findbugs.gradle'
+apply from: 'gradle/cobertura.gradle'
 
 /*
 Usage:
